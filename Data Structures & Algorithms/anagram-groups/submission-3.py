@@ -1,0 +1,10 @@
+from collections import defaultdict
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        hashMap = defaultdict(list)
+        for s in strs:
+            freq = [0] * 26
+            for char in s:
+                freq[ord(char) - ord('a')] += 1
+            hashMap[tuple(freq)].append(s)
+        return list(hashMap.values())
